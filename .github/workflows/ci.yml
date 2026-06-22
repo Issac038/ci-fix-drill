@@ -1,5 +1,10 @@
 name: CI Pipeline
 
+# Notes: Adjusted to ensure reproducible installs and correct sequencing.
+# - Uses `npm ci` for deterministic installs.
+# - `test` job depends on `install` via `needs: install`.
+# - Each job performs its own `checkout` and `npm ci` because GitHub Actions runs jobs on fresh runners.
+
 on:
   push:
     branches: ['*']
